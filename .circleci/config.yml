@@ -15,7 +15,12 @@ jobs:
       - image: "circleci/python:3.6.4"
     steps:
       - checkout
-      - run: python3 test_main.py
+      - run:
+          name: Install pytest
+          command: pip install pytest
+      - run:
+          name: Run tests
+          command: python3 -m pytest test_main.py
 
 workflows:
   build_and_test:
